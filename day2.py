@@ -25,10 +25,19 @@ def my_function(ops, in1, in2):
         pos += 4
     print("Program halted")
     print("Value at position 0 is ", ops[0])
-    if(int(ops[0]) == 19690720):
-        print("got the correct inputs")
-        sleep(20)
+    return int(ops[0])
 
+def inputloop():
+    for x in range(0,100):
+        for y in range(0,100):
+            ops = original[:]
+            in1 = x
+            in2 = y
+            print("Inputs for this run are ", x, " and ", y)
+            output = my_function(ops, in1, in2)
+            if (output == 19690720):
+                print("correct inputs found")
+                return (x, y)
 
 
 filepath = 'input2.txt'
@@ -39,14 +48,10 @@ with open(filepath) as fp:
     ops = fp.read().split(',')
     original = []
     original = ops[:]
+    result = inputloop()
+    print(result)
+    
 
-    for x in range(0,100):
-        for y in range(0,100):
-            ops = original[:]
-            in1 = x
-            in2 = y
-            print("Inputs for this run are ", x, " and ", y)
-            my_function(ops, in1, in2)
 
     
 
